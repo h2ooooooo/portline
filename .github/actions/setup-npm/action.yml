@@ -1,0 +1,28 @@
+name: Set up the pinned npm version
+description: Install npm into a separate runner prefix without replacing the running package manager.
+
+inputs:
+  version:
+    description: npm version to install.
+    required: false
+    default: '12.0.2'
+
+runs:
+  using: composite
+  steps:
+    - name: Install npm into an isolated prefix
+      shell: bash
+      env:
+        NPM_VERSION: ${{ inputs.version }}
+      run: |
+        npm_prefix="$RUNNER_TEMP/npm-cli"
+        npm install --global --prefix "$npm_prefix" --ignore-scripts --no-audit --no-fund "npm@$NPM_VERSION"
+        printf '%s\n' "$npm_prefix" "$npm_prefix/bin" >> "$GITHUB_PATH"
+    - name: Verify the selected npm version
+      shell: bash
+      env:
+        NPM_VERSION: ${{ inputs.version }}
+      run: |
+        actual_version="$(npm --version)"
+        test "$actual_version" = "$NPM_VERSION"
+        printf 'Using npm %s\n' "$actual_version"
