@@ -1,0 +1,214 @@
+{
+    "schemaVersion": 1,
+    "entries": [
+        {
+            "id": "portline",
+            "name": "Portline",
+            "description": "Shared connection profile contracts, queries, native storage safeguards and CLI infrastructure.",
+            "role": "Shared profile infrastructure",
+            "repository": "https://github.com/h2ooooooo/portline",
+            "packages": [
+                "@jalsoedesign/portline-abstract",
+                "@jalsoedesign/portline-core",
+                "@jalsoedesign/portline-platform",
+                "@jalsoedesign/portline-cli"
+            ],
+            "documentation": "https://h2ooooooo.github.io/portline/",
+            "family": "portline",
+            "applications": []
+        },
+        {
+            "id": "filezilla-js",
+            "name": "FileZilla JS",
+            "description": "FileZilla Site Manager profiles and Dockline transfer adapters.",
+            "role": "Application adapters",
+            "repository": "https://github.com/h2ooooooo/filezilla-js",
+            "packages": [
+                "@jalsoedesign/filezilla-core",
+                "@jalsoedesign/filezilla-cli",
+                "@jalsoedesign/filezilla-connector-abstract",
+                "@jalsoedesign/filezilla-connector-ftp",
+                "@jalsoedesign/filezilla-connector-sftp"
+            ],
+            "documentation": "https://h2ooooooo.github.io/filezilla-js/",
+            "family": "portline",
+            "applications": [
+                "FileZilla"
+            ]
+        },
+        {
+            "id": "putty-js",
+            "name": "PuTTY and KiTTY JS",
+            "description": "PuTTY and KiTTY profiles, native settings and storage discovery.",
+            "role": "Application adapters",
+            "repository": "https://github.com/h2ooooooo/putty-js",
+            "packages": [
+                "@jalsoedesign/putty-core",
+                "@jalsoedesign/putty-cli"
+            ],
+            "documentation": "https://h2ooooooo.github.io/putty-js/",
+            "family": "portline",
+            "applications": [
+                "PuTTY",
+                "KiTTY"
+            ]
+        },
+        {
+            "id": "heidisql-js",
+            "name": "HeidiSQL JS",
+            "description": "Database sessions and independent SSH tunnel profiles.",
+            "role": "Application adapters",
+            "repository": "https://github.com/h2ooooooo/heidisql-js",
+            "packages": [
+                "@jalsoedesign/heidisql-core",
+                "@jalsoedesign/heidisql-cli"
+            ],
+            "documentation": "https://h2ooooooo.github.io/heidisql-js/",
+            "family": "portline",
+            "applications": [
+                "HeidiSQL"
+            ]
+        },
+        {
+            "id": "jsbrains",
+            "name": "jsbrains",
+            "description": "IDE installations, deployments, saved credential status and Portline integration.",
+            "role": "Application adapters",
+            "repository": "https://github.com/h2ooooooo/jsbrains",
+            "packages": [
+                "@jalsoedesign/jsbrains",
+                "@jalsoedesign/jsbrains-cli",
+                "@jalsoedesign/jsbrains-portline",
+                "@jalsoedesign/jsbrains-portline-cli"
+            ],
+            "documentation": "https://h2ooooooo.github.io/jsbrains/",
+            "family": "portline",
+            "applications": [
+                "JetBrains IDEs"
+            ]
+        },
+        {
+            "id": "openssh-js",
+            "name": "OpenSSH JS",
+            "description": "SSH configuration profiles, identities, includes and jump hosts.",
+            "role": "Application adapters",
+            "repository": "https://github.com/h2ooooooo/openssh-js",
+            "packages": [
+                "@jalsoedesign/openssh-core",
+                "@jalsoedesign/openssh-cli"
+            ],
+            "documentation": "https://h2ooooooo.github.io/openssh-js/",
+            "family": "portline",
+            "applications": [
+                "OpenSSH"
+            ]
+        },
+        {
+            "id": "winscp-js",
+            "name": "WinSCP JS",
+            "description": "WinSCP sessions, transfer profiles, SSH tunnels and native storage discovery.",
+            "role": "Application adapters",
+            "repository": "https://github.com/h2ooooooo/winscp-js",
+            "packages": [
+                "@jalsoedesign/winscp-core",
+                "@jalsoedesign/winscp-cli"
+            ],
+            "documentation": "https://h2ooooooo.github.io/winscp-js/",
+            "family": "portline",
+            "applications": [
+                "WinSCP"
+            ]
+        },
+        {
+            "id": "dockline-abstract",
+            "name": "Dockline contracts",
+            "description": "Shared transport, storage and operation contracts.",
+            "role": "Transport contracts",
+            "repository": "https://github.com/h2ooooooo/dockline",
+            "packages": [
+                "@jalsoedesign/dockline-abstract"
+            ],
+            "documentation": "https://h2ooooooo.github.io/dockline/",
+            "family": "dockline",
+            "applications": []
+        },
+        {
+            "id": "dockline-core",
+            "name": "Dockline SDK",
+            "description": "Transfer SDK, policies, resource lifetimes and optional protocol client loading.",
+            "role": "Operations",
+            "repository": "https://github.com/h2ooooooo/dockline",
+            "packages": [
+                "@jalsoedesign/dockline-core"
+            ],
+            "documentation": "https://h2ooooooo.github.io/dockline/",
+            "family": "dockline",
+            "applications": []
+        },
+        {
+            "id": "dockline-cli",
+            "name": "Dockline CLI",
+            "description": "Command line transfers with explicit connection configuration and host trust.",
+            "role": "Operations CLI",
+            "repository": "https://github.com/h2ooooooo/dockline",
+            "packages": [
+                "@jalsoedesign/dockline-cli"
+            ],
+            "documentation": "https://h2ooooooo.github.io/dockline/",
+            "family": "dockline",
+            "applications": []
+        },
+        {
+            "id": "dockline-ftp-client",
+            "name": "Dockline FTP",
+            "description": "FTP and FTPS transfers.",
+            "role": "Protocol client",
+            "repository": "https://github.com/h2ooooooo/dockline",
+            "packages": [
+                "@jalsoedesign/dockline-ftp-client"
+            ],
+            "documentation": "https://h2ooooooo.github.io/dockline/",
+            "family": "dockline",
+            "applications": []
+        },
+        {
+            "id": "dockline-sftp-client",
+            "name": "Dockline SFTP",
+            "description": "SFTP transfers with host verification and SSH authentication.",
+            "role": "Protocol client",
+            "repository": "https://github.com/h2ooooooo/dockline",
+            "packages": [
+                "@jalsoedesign/dockline-sftp-client"
+            ],
+            "documentation": "https://h2ooooooo.github.io/dockline/",
+            "family": "dockline",
+            "applications": []
+        },
+        {
+            "id": "dockline-ssh-client",
+            "name": "Dockline SSH",
+            "description": "SSH execution, forwarding and session operations.",
+            "role": "Protocol client",
+            "repository": "https://github.com/h2ooooooo/dockline",
+            "packages": [
+                "@jalsoedesign/dockline-ssh-client"
+            ],
+            "documentation": "https://h2ooooooo.github.io/dockline/",
+            "family": "dockline",
+            "applications": []
+        },
+        {
+            "id": "dockline-keys",
+            "name": "Dockline keys",
+            "description": "OpenSSH, PuTTY PPK and PEM key inspection, conversion and encrypted export.",
+            "role": "Key management",
+            "repository": "https://github.com/h2ooooooo/dockline",
+            "packages": [
+                "@jalsoedesign/dockline-keys"
+            ],
+            "documentation": "https://h2ooooooo.github.io/dockline/",
+            "family": "dockline",
+            "applications": []
+        }
+    ]
+}

@@ -1,0 +1,152 @@
+{
+    "programs": [
+        {
+            "name": "profiles",
+            "page": "integration/api/quick-start.md",
+            "args": "",
+            "output": "Profiles: 1\nSelected: Demo\nHost: 127.0.0.1\nMatches: 1\nMetadata only: no settings read and no connection opened."
+        },
+        {
+            "name": "credentials",
+            "page": "integration/credentials.md",
+            "args": "",
+            "output": "Provider calls before resolution: 0\nCredential state: available\nProvider calls after resolution: 1\nSecret value omitted from output."
+        },
+        {
+            "name": "sync-preview",
+            "page": "integration/sync.md",
+            "args": "",
+            "output": "Source profile: Demo\nDestination profile: Imported/Demo\nPlanned changes: 1\nNative settings written: no"
+        },
+        {
+            "name": "profile-cli",
+            "page": "integration/cli/quick-start.md",
+            "args": "list --json",
+            "output": "[\n  {\n    \"path\": \"Demo\",\n    \"host\": \"127.0.0.1\",\n    \"protocol\": \"ssh\",\n    \"keyFile\": \"\",\n    \"remoteDirectory\": \"\"\n  }\n]"
+        }
+    ],
+    "assets": [
+        {
+            "name": "profiles",
+            "filename": "profiles.ts",
+            "language": "TypeScript"
+        },
+        {
+            "name": "profiles",
+            "filename": "profiles.js",
+            "language": "JavaScript"
+        },
+        {
+            "name": "profiles",
+            "filename": "profiles.mjs",
+            "language": "MJS"
+        },
+        {
+            "name": "profiles",
+            "filename": "profiles.cjs",
+            "language": "CommonJS"
+        },
+        {
+            "name": "credentials",
+            "filename": "credentials.ts",
+            "language": "TypeScript"
+        },
+        {
+            "name": "credentials",
+            "filename": "credentials.js",
+            "language": "JavaScript"
+        },
+        {
+            "name": "credentials",
+            "filename": "credentials.mjs",
+            "language": "MJS"
+        },
+        {
+            "name": "credentials",
+            "filename": "credentials.cjs",
+            "language": "CommonJS"
+        },
+        {
+            "name": "sync-preview",
+            "filename": "sync-preview.ts",
+            "language": "TypeScript"
+        },
+        {
+            "name": "sync-preview",
+            "filename": "sync-preview.js",
+            "language": "JavaScript"
+        },
+        {
+            "name": "sync-preview",
+            "filename": "sync-preview.mjs",
+            "language": "MJS"
+        },
+        {
+            "name": "sync-preview",
+            "filename": "sync-preview.cjs",
+            "language": "CommonJS"
+        },
+        {
+            "name": "profile-cli",
+            "filename": "profile-cli.ts",
+            "language": "TypeScript"
+        },
+        {
+            "name": "profile-cli",
+            "filename": "profile-cli.js",
+            "language": "JavaScript"
+        },
+        {
+            "name": "profile-cli",
+            "filename": "profile-cli.mjs",
+            "language": "MJS"
+        },
+        {
+            "name": "profile-cli",
+            "filename": "profile-cli.cjs",
+            "language": "CommonJS"
+        }
+    ],
+    "cliCases": [
+        {
+            "args": [
+                "get",
+                "Demo",
+                "host",
+                "--json"
+            ],
+            "code": 0,
+            "stdout": "\"127.0.0.1\"",
+            "stderr": ""
+        },
+        {
+            "args": [
+                "source",
+                "--json"
+            ],
+            "code": 0,
+            "stdout": "{\n  \"id\": \"demo\",\n  \"application\": \"demo\"\n}",
+            "stderr": ""
+        },
+        {
+            "args": [
+                "list",
+                "--unknown",
+                "--json"
+            ],
+            "code": 1,
+            "stdout": "",
+            "stderr": "{\"error\":\"Unknown option \\\"--unknown\\\"\"}"
+        },
+        {
+            "args": [
+                "search",
+                "Demo"
+            ],
+            "code": 0,
+            "stdout": "Found 1 profile\n\n┌──────────────────┬────────────┐\n│ Label            │ Value      │\n├──────────────────┼────────────┤\n│ Name             │ Demo       │\n│ Path             │ Demo       │\n│ Protocol         │ ssh        │\n│ Host             │ 127.0.0.1  │\n│ Port             │ 22         │\n│ Username         │ fixture    │\n│ Password         │            │\n│ Passphrase       │            │\n│ Credential state │ not-stored │\n│ Authentication   │            │\n│ Private key      │            │\n│ Remote           │            │\n└──────────────────┴────────────┘",
+            "stderr": "",
+            "colored": true
+        }
+    ]
+}

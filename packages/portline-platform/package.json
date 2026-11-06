@@ -1,0 +1,49 @@
+{
+    "name": "@jalsoedesign/portline-platform",
+    "version": "0.1.0",
+    "description": "Native profile storage, discovery and guarded writers for Portline",
+    "main": "dist/index.js",
+    "types": "dist/index.d.ts",
+    "exports": {
+        ".": {
+            "types": "./dist/index.d.ts",
+            "default": "./dist/index.js"
+        }
+    },
+    "files": [
+        "dist",
+        "LICENSE",
+        "README.md"
+    ],
+    "license": "MIT",
+    "engines": {
+        "node": ">=22.22.2"
+    },
+    "scripts": {
+        "build": "node ../../scripts/build-package.mjs",
+        "test": "vitest run",
+        "lint": "eslint src tests --max-warnings 0",
+        "prepack": "npm run build"
+    },
+    "dependencies": {
+        "@jalsoedesign/portline-abstract": "^0.1.0",
+        "@jalsoedesign/portline-core": "^0.1.0",
+        "fast-xml-parser": "5.12.0"
+    },
+    "devDependencies": {
+        "typescript": "6.0.3",
+        "vitest": "5.1.0"
+    },
+    "publishConfig": {
+        "access": "public"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/h2ooooooo/portline.git",
+        "directory": "packages/portline-platform"
+    },
+    "homepage": "https://h2ooooooo.github.io/portline/",
+    "bugs": {
+        "url": "https://github.com/h2ooooooo/portline/issues"
+    }
+}

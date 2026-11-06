@@ -1,0 +1,109 @@
+.portline-home .application-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: 16px;
+    margin: 24px 0;
+    padding: 0;
+    list-style: none;
+}
+
+.portline-home .application-card {
+    display: flex;
+    flex-direction: column;
+    margin: 0;
+    border: 1px solid var(--vp-c-divider);
+    border-radius: 12px;
+    padding: 24px;
+    background: var(--vp-c-bg-soft);
+    transition: border-color 160ms ease;
+}
+
+.portline-home .application-card:hover,
+.portline-home .application-card:focus-within {
+    border-color: var(--vp-c-brand-1);
+}
+
+.portline-home .application-card h3 {
+    margin: 0 0 12px;
+    font-size: 18px;
+    line-height: 26px;
+}
+
+.portline-home .application-card h3 a {
+    color: var(--vp-c-text-1);
+    text-decoration: none;
+}
+
+.portline-home .application-card h3 a:hover {
+    color: var(--vp-c-brand-1);
+}
+
+.portline-home .application-card .description {
+    flex: 1;
+    margin: 0 0 24px;
+    color: var(--vp-c-text-2);
+    font-size: 14px;
+    line-height: 24px;
+}
+
+.portline-home .application-card .guides {
+    display: flex;
+    gap: 8px;
+}
+
+.portline-home .application-card .guides a {
+    flex: 1;
+    border: 1px solid transparent;
+    border-radius: 8px;
+    padding: 10px 12px;
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 24px;
+    text-align: center;
+    text-decoration: none;
+}
+
+.portline-home .application-card .guides .api-guide {
+    background: #f28d79;
+    color: #241916;
+}
+
+.portline-home .application-card .guides .api-guide:hover {
+    background: #f8ab99;
+}
+
+.portline-home .application-card .guides .cli-guide {
+    background: #9bcfc5;
+    color: #152724;
+}
+
+.portline-home .application-card .guides .cli-guide:hover {
+    background: #b3ded6;
+}
+
+.portline-home .application-card .how-it-works {
+    align-self: flex-start;
+    margin-top: 12px;
+    padding: 8px 0;
+    font-size: 14px;
+    line-height: 24px;
+}
+
+@media (min-width: 640px) {
+    .portline-home .application-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+@media (min-width: 960px) {
+    .portline-home .application-grid {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+}
+
+
+@media (prefers-reduced-motion: reduce) {
+    .portline-home .application-card {
+        transition: none;
+    }
+}

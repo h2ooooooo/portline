@@ -1,0 +1,44 @@
+name: Documentation
+on:
+  push:
+    branches: [main]
+    paths: ['docs/**', 'scripts/generate-api-docs.mjs', ecosystem.json, 'scripts/ecosystem*', CONTRIBUTING.md, '.github/workflows/docs.yml']
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency:
+  group: pages
+  cancel-in-progress: true
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-node@v7
+        with:
+          node-version: 24.15.0
+          cache: npm
+          cache-dependency-path: docs/package-lock.json
+      - run: npm install --global npm@12.0.2
+      - run: npm run docs:install
+      - run: npm --prefix docs audit --include=dev
+      - run: npm run docs:check
+      - run: npm run test:catalog
+      - run: npm run docs:build
+        env:
+          DOCS_BASE: /portline/
+      - uses: actions/upload-pages-artifact@v4
+        with:
+          path: docs/.vitepress/dist
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    permissions:
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v4

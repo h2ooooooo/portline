@@ -1,0 +1,73 @@
+{
+    "name": "@jalsoedesign/portline-monorepo",
+    "version": "0.1.0",
+    "private": true,
+    "license": "MIT",
+    "packageManager": "npm@12.0.2",
+    "workspaces": [
+        "packages/portline-abstract",
+        "packages/portline-core",
+        "packages/portline-platform",
+        "packages/portline-cli"
+    ],
+    "engines": {
+        "node": ">=22.22.2",
+        "npm": ">=12.0.2"
+    },
+    "scripts": {
+        "build": "npm run build --workspace=@jalsoedesign/portline-abstract && npm run build --workspace=@jalsoedesign/portline-core && npm run build --workspace=@jalsoedesign/portline-platform && npm run build --workspace=@jalsoedesign/portline-cli",
+        "lint": "eslint . --max-warnings 0",
+        "test": "npm run build && npm run test --workspaces",
+        "test:style": "node --test scripts/eslint/*.test.mjs",
+        "check:packages": "node scripts/check-packages.mjs",
+        "check:consumer": "node scripts/check-consumer.mjs",
+        "check:applications": "node scripts/check-applications.mjs",
+        "check": "npm run lint && npm test && npm run test:style && npm run check:packages && npm run check:consumer && npm run docs:check && npm run test:catalog && npm run check:publication && npm run docs:api:check && npm run docs:imports:check && npm run docs:examples:check && npm run check:locks && npm run test:locks",
+        "pack:local": "node scripts/pack-local.mjs",
+        "dev:packages": "node scripts/dev-packages.mjs",
+        "check:publication": "npm run test:publication && node scripts/check-publication.mjs",
+        "docs:build": "npm run docs:catalog && npm --prefix docs run build",
+        "docs:check": "node scripts/ecosystem.mjs --check",
+        "test:catalog": "node --test scripts/ecosystem.test.mjs",
+        "docs:api": "node scripts/generate-api-docs.mjs",
+        "docs:api:check": "node scripts/generate-api-docs.mjs --check",
+        "docs:install": "npm --prefix docs ci --ignore-scripts",
+        "docs:dev": "npm --prefix docs run dev",
+        "docs:preview": "npm --prefix docs run preview",
+        "docs:catalog": "node scripts/ecosystem.mjs",
+        "demo:profiles": "node examples/test-profiles.mjs",
+        "docs:imports:check": "node scripts/check-doc-imports.mjs",
+        "demo:api": "node examples/test-api.mjs",
+        "docs:examples:check": "node scripts/check-doc-examples.mjs",
+        "check:locks": "node scripts/check-lockfile.mjs",
+        "test:locks": "node --test scripts/check-lockfile.test.mjs",
+        "release:lock": "node scripts/release-bootstrap.mjs --lock",
+        "check:bootstrap": "node scripts/release-bootstrap.mjs",
+        "test:publication": "node --test scripts/publication-policy.test.mjs"
+    },
+    "devDependencies": {
+        "@eslint/js": "10.0.1",
+        "@stylistic/eslint-plugin": "5.10.0",
+        "@types/node": "22.20.5",
+        "eslint": "10.14.0",
+        "globals": "17.14.0",
+        "tsx": "4.23.15",
+        "typescript": "6.0.3",
+        "typescript-eslint": "8.72.1",
+        "vitest": "5.1.0"
+    },
+    "allowScripts": {
+        "esbuild@0.28.2": true
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/h2ooooooo/portline.git"
+    },
+    "homepage": "https://h2ooooooo.github.io/portline/",
+    "bugs": {
+        "url": "https://github.com/h2ooooooo/portline/issues"
+    },
+    "overrides": {
+        "minimatch@>=7 <11.0.1": "11.0.5"
+    }
+}

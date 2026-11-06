@@ -1,0 +1,53 @@
+{
+    "name": "@jalsoedesign/portline-cli",
+    "version": "0.1.0",
+    "description": "Application-independent connection profile cli",
+    "type": "module",
+    "main": "dist/index.js",
+    "types": "dist/index.d.ts",
+    "scripts": {
+        "build": "node ../../scripts/build-package.mjs",
+        "test": "vitest run",
+        "lint": "eslint src tests --max-warnings 0",
+        "prepack": "npm run build"
+    },
+    "dependencies": {
+        "@jalsoedesign/portline-abstract": "^0.1.0",
+        "@jalsoedesign/portline-core": "^0.1.0",
+        "chalk": "6.0.1",
+        "@jalsoedesign/portline-platform": "^0.1.0"
+    },
+    "devDependencies": {
+        "typescript": "6.0.3",
+        "vitest": "5.1.0"
+    },
+    "license": "MIT",
+    "engines": {
+        "node": ">=22.22.2"
+    },
+    "files": [
+        "dist",
+        "LICENSE",
+        "README.md"
+    ],
+    "exports": {
+        ".": {
+            "types": "./dist/index.d.ts",
+            "default": "./dist/index.js"
+        },
+        "./package.json": "./package.json",
+        "./dist/*": "./dist/*"
+    },
+    "publishConfig": {
+        "access": "public"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/h2ooooooo/portline.git",
+        "directory": "packages/portline-cli"
+    },
+    "homepage": "https://h2ooooooo.github.io/portline/",
+    "bugs": {
+        "url": "https://github.com/h2ooooooo/portline/issues"
+    }
+}

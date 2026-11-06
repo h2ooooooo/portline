@@ -1,0 +1,30 @@
+{
+    "name": "@jalsoedesign/portline-docs",
+    "version": "1.0.0",
+    "private": true,
+    "type": "module",
+    "license": "MIT",
+    "scripts": {
+        "dev": "vitepress dev . --host 127.0.0.1",
+        "build": "vitepress build .",
+        "preview": "vitepress preview . --host 127.0.0.1"
+    },
+    "devDependencies": {
+        "vitepress": "1.6.4",
+        "vue": "3.5.45"
+    },
+    "overrides": {
+        "vitepress": {
+            "vite": "6.4.5"
+        },
+        "source-map-js": "1.2.2"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/h2ooooooo/portline.git"
+    },
+    "homepage": "https://h2ooooooo.github.io/portline/",
+    "bugs": {
+        "url": "https://github.com/h2ooooooo/portline/issues"
+    }
+}
