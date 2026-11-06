@@ -684,4 +684,3 @@ export declare class RegistryWriteError extends Error {
     });
 }
 ```
-

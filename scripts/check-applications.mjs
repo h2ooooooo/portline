@@ -67,7 +67,8 @@ await writeFile(path.join(consumer, 'package.json'), JSON.stringify({
 run([
     npmCli,
     'install',
-    '--offline',
+    '--prefer-offline',
+    '--registry=https://registry.npmjs.org',
     '--ignore-scripts',
     '--no-audit',
     '--no-fund',
