@@ -1,7 +1,7 @@
 import assert from 'node:assert/strict';
 import {readFile} from 'node:fs/promises';
 import {test} from 'node:test';
-import {renderCatalog, validateCatalog} from './ecosystem.mjs';
+import {assertGeneratedCatalog, renderCatalog, validateCatalog} from './ecosystem.mjs';
 
 const catalog = JSON.parse(await readFile(new URL('../ecosystem.json', import.meta.url), 'utf8'));
 
@@ -46,4 +46,15 @@ test('family directory leads with application API and CLI documentation', () => 
 
     assert.ok(!libraries.includes('portline-abstract'));
     assert.ok(libraries.includes('/integration/'));
+});
+
+test('generated catalog checks accept Windows line endings and reject content drift', () => {
+    const output = renderCatalog(catalog);
+
+    for (const expected of Object.values(output)) {
+        assert.doesNotThrow(() => assertGeneratedCatalog(expected, expected));
+        assert.doesNotThrow(() => assertGeneratedCatalog(expected.replaceAll('\n', '\r\n'), expected));
+        assert.throws(() => assertGeneratedCatalog(expected + 'changed', expected));
+        assert.throws(() => assertGeneratedCatalog(expected + '\n', expected));
+    }
 });

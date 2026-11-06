@@ -116,6 +116,10 @@ export function renderCatalog(catalog) {
     return {markdown, libraries};
 }
 
+export function assertGeneratedCatalog(actual, expected, message) {
+    assert.equal(actual.replaceAll('\r\n', '\n'), expected, message);
+}
+
 if (process.argv[1] && path.resolve(process.argv[1]) === fileURLToPath(import.meta.url)) {
     const catalog = JSON.parse(await readFile(path.join(repository, 'ecosystem.json'), 'utf8'));
     const {markdown, libraries} = renderCatalog(catalog);
@@ -123,8 +127,8 @@ if (process.argv[1] && path.resolve(process.argv[1]) === fileURLToPath(import.me
     const libraryFile = path.join(repository, 'docs/libraries/index.md');
 
     if (process.argv.includes('--check')) {
-        assert.equal(await readFile(filename, 'utf8'), markdown, 'Generated index drifted; run npm run docs:build');
-        assert.equal(await readFile(libraryFile, 'utf8'), libraries, 'Library directory drifted; run npm run docs:build');
+        assertGeneratedCatalog(await readFile(filename, 'utf8'), markdown, 'Generated index drifted; run npm run docs:build');
+        assertGeneratedCatalog(await readFile(libraryFile, 'utf8'), libraries, 'Library directory drifted; run npm run docs:build');
         console.log('Catalog validated; ecosystem and library directories match their source.');
     } else {
         await writeFile(filename, markdown);
