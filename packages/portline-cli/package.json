@@ -1,6 +1,6 @@
 {
     "name": "@jalsoedesign/portline-cli",
-    "version": "0.1.0",
+    "version": "1.0.0",
     "description": "Application-independent connection profile cli",
     "type": "module",
     "main": "dist/index.js",
@@ -12,10 +12,10 @@
         "prepack": "npm run build"
     },
     "dependencies": {
-        "@jalsoedesign/portline-abstract": "^0.1.0",
-        "@jalsoedesign/portline-core": "^0.1.0",
+        "@jalsoedesign/portline-abstract": "^1.0.0",
+        "@jalsoedesign/portline-core": "^1.0.0",
         "chalk": "6.0.1",
-        "@jalsoedesign/portline-platform": "^0.1.0"
+        "@jalsoedesign/portline-platform": "^1.0.0"
     },
     "devDependencies": {
         "typescript": "6.0.3",

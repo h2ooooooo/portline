@@ -1,6 +1,6 @@
 {
     "name": "@jalsoedesign/portline-platform",
-    "version": "0.1.0",
+    "version": "1.0.0",
     "description": "Native profile storage, discovery and guarded writers for Portline",
     "main": "dist/index.js",
     "types": "dist/index.d.ts",
@@ -26,8 +26,8 @@
         "prepack": "npm run build"
     },
     "dependencies": {
-        "@jalsoedesign/portline-abstract": "^0.1.0",
-        "@jalsoedesign/portline-core": "^0.1.0",
+        "@jalsoedesign/portline-abstract": "^1.0.0",
+        "@jalsoedesign/portline-core": "^1.0.0",
         "fast-xml-parser": "5.12.0"
     },
     "devDependencies": {
