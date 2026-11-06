@@ -14,6 +14,8 @@ hero:
       link: /workflows/
 ---
 
+Source code: [GitHub repository](https://github.com/h2ooooooo/portline).
+
 <script setup>
 import LibraryCards from './.vitepress/theme/LibraryCards.js';
 </script>
