@@ -1,7 +1,5 @@
 # API documentation
 
-Part of [Build an integration](/integration/): shared APIs and infrastructure for adapter authors. For application usage, [choose a library](/libraries/).
-
 Use Portline to query saved connection metadata, resolve credential references and plan changes between native application settings. Start with an in-memory catalog, then replace it with the application adapter needed.
 
 ## Start here

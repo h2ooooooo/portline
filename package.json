@@ -45,7 +45,8 @@
         "release:lock": "node scripts/release-bootstrap.mjs --lock",
         "check:bootstrap": "node scripts/release-bootstrap.mjs",
         "test:publication": "node --test scripts/publication-policy.test.mjs",
-        "check:execution-consumer": "node scripts/check-execution-consumer.mjs"
+        "check:execution-consumer": "node scripts/check-execution-consumer.mjs",
+        "test:docs-links": "node --test scripts/doc-links.test.mjs"
     },
     "devDependencies": {
         "@eslint/js": "10.0.1",
