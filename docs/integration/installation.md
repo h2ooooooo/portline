@@ -6,14 +6,14 @@ Choose the package needed by the code being written:
 
 | Task | Install |
 | --- | --- |
-| Query profiles, resolve references or plan sync | `npm install @jalsoedesign/portline-core@rc` |
-| Import profile and provider types directly | `npm install @jalsoedesign/portline-abstract@rc` |
-| Implement native discovery or a guarded writer | `npm install @jalsoedesign/portline-platform@rc` |
-| Embed command parsing and presentation | `npm install @jalsoedesign/portline-cli@rc` |
-| Map a supported normalized profile without connecting | `npm install @jalsoedesign/portline-dockline@rc` |
-| Connect for FTP/FTPS files | `npm install @jalsoedesign/portline-dockline@rc @jalsoedesign/dockline-ftp-client@rc` |
-| Connect for SFTP files | `npm install @jalsoedesign/portline-dockline@rc @jalsoedesign/dockline-sftp-client@rc` |
-| Run SSH commands | `npm install @jalsoedesign/portline-dockline@rc @jalsoedesign/dockline-ssh-client@rc` |
+| Query profiles, resolve references or plan sync | `npm install @jalsoedesign/portline-core` |
+| Import profile and provider types directly | `npm install @jalsoedesign/portline-abstract` |
+| Implement native discovery or a guarded writer | `npm install @jalsoedesign/portline-platform` |
+| Embed command parsing and presentation | `npm install @jalsoedesign/portline-cli` |
+| Map a supported normalized profile without connecting | `npm install @jalsoedesign/portline-dockline` |
+| Connect for FTP/FTPS files | `npm install @jalsoedesign/portline-dockline @jalsoedesign/dockline-ftp-client` |
+| Connect for SFTP files | `npm install @jalsoedesign/portline-dockline @jalsoedesign/dockline-sftp-client` |
+| Run SSH commands | `npm install @jalsoedesign/portline-dockline @jalsoedesign/dockline-ssh-client` |
 
 Install packages that the code imports directly. Internal dependencies are installed by npm. For native saved settings, choose an [application adapter](/ecosystem); the shared packages do not install application readers or executables automatically.
 

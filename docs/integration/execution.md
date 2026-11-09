@@ -6,10 +6,10 @@ Use the optional `@jalsoedesign/portline-dockline` package to reuse a selected p
 
 | Task | Install |
 | --- | --- |
-| Resolve configuration without connecting | `npm install @jalsoedesign/portline-dockline@rc` |
-| FTP/FTPS file operations | `npm install @jalsoedesign/portline-dockline@rc @jalsoedesign/dockline-ftp-client@rc` |
-| SFTP file operations | `npm install @jalsoedesign/portline-dockline@rc @jalsoedesign/dockline-sftp-client@rc` |
-| SSH commands | `npm install @jalsoedesign/portline-dockline@rc @jalsoedesign/dockline-ssh-client@rc` |
+| Resolve configuration without connecting | `npm install @jalsoedesign/portline-dockline` |
+| FTP/FTPS file operations | `npm install @jalsoedesign/portline-dockline @jalsoedesign/dockline-ftp-client` |
+| SFTP file operations | `npm install @jalsoedesign/portline-dockline @jalsoedesign/dockline-sftp-client` |
+| SSH commands | `npm install @jalsoedesign/portline-dockline @jalsoedesign/dockline-ssh-client` |
 
 Install the application reader separately when reading native settings. The bridge has required Dockline contracts/SDK dependencies and optional protocol-client peers. The SSH client includes SFTP support for its own helpers. Importing the bridge, listing metadata, `toConfig` and `toSshConfig` do not load a protocol client or open a socket. Connection operations report an actionable `MISSING_HANDLER` error when the selected client is absent.
 

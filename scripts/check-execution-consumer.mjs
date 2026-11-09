@@ -28,7 +28,7 @@ try {
     await writeFile(path.join(directory, 'package.json'), JSON.stringify({
         private: true,
         type: 'module',
-        dependencies: {'@jalsoedesign/portline-dockline': '^1.0.0-rc.1'},
+        dependencies: {'@jalsoedesign/portline-dockline': '^1.0.0'},
         devDependencies: {typescript: '6.0.3', '@types/node': '22.20.5'},
     }, null, 4));
     await run([

@@ -5,7 +5,7 @@ Optional shared execution for normalized profiles from FileZilla, WinSCP, PuTTY,
 Install the bridge and the protocol client used by the operation:
 
 ```sh
-npm install @jalsoedesign/portline-dockline@rc @jalsoedesign/dockline-sftp-client@rc
+npm install @jalsoedesign/portline-dockline @jalsoedesign/dockline-sftp-client
 ```
 
 Use `dockline-ftp-client` for FTP/FTPS or `dockline-ssh-client` for SSH commands. The SSH client includes its SFTP support. Protocol clients are optional peers; importing the bridge or mapping configuration does not load one. Missing clients report `ProfileExecutionError` with `code: 'MISSING_HANDLER'` and an install command. Broken installed packages retain their original errors.

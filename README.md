@@ -19,7 +19,7 @@ This repository contains the five shared packages used by those independent appl
 ## Installation
 
 ~~~sh
-npm install @jalsoedesign/portline-core@rc @jalsoedesign/portline-platform@rc
+npm install @jalsoedesign/portline-core @jalsoedesign/portline-platform
 ~~~
 
 Node 22.22.2 or newer is required. Abstract, core, platform and the Dockline bridge provide CommonJS-compatible exports; CLI is ESM. Profiles contain credential references rather than stored passwords or key contents. For execution, install `@jalsoedesign/portline-dockline` and the selected FTP, SFTP or SSH client; see the [complete execution guide](https://h2ooooooo.github.io/portline/integration/execution).
@@ -49,4 +49,4 @@ MIT. See [LICENSE](LICENSE).
 
 Use the optional [shared Dockline bridge](https://h2ooooooo.github.io/portline/integration/execution) to execute a selected normalized profile. Readers stay independent of protocol clients.
 
-See [First release candidate](RELEASE_RC.md) for RC versions and installation commands.
+See [Stable release](RELEASE.md) for versions, installation commands and the compatibility policy.

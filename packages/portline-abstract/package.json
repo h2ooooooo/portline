@@ -1,6 +1,6 @@
 {
     "name": "@jalsoedesign/portline-abstract",
-    "version": "1.0.0-rc.1",
+    "version": "1.0.0",
     "description": "Application-independent connection profile abstract",
     "main": "dist/index.js",
     "types": "dist/index.d.ts",
@@ -34,7 +34,7 @@
     },
     "publishConfig": {
         "access": "public",
-        "tag": "rc"
+        "tag": "latest"
     },
     "repository": {
         "type": "git",
