@@ -19,32 +19,26 @@ The five-element, four-property and 120-column limits make the approved example 
 
 ## Commands
 
-From the repository root, check or format all authored JavaScript and TypeScript:
+From the repository root, check authored JavaScript and TypeScript, apply available formatting fixes, and verify the local style rules:
 
-```sh
-npm run style:check
-npm run style:fix
-```
-
-The regular lint command checks authored JavaScript/TypeScript and SCSS; the existing code-correctness rules remain enabled:
-
-```sh
+~~~sh
 npm run lint
-```
+npx eslint . --fix
+npm run test:style
+~~~
 
-Format all code and styles, or target a specific code file:
+For a focused edit, target its actual package source:
 
-```sh
-npm run format
-npm run style:check -- packages/connector-abstract/src/operation-options.ts
-npm run style:fix -- packages/connector-abstract/src/operation-options.ts
-```
+~~~sh
+npx eslint packages/portline-dockline/src/index.ts
+npx eslint packages/portline-dockline/src/index.ts --fix
+~~~
 
-The configuration covers package source, tests, examples, scripts, configuration files, and the VitePress configuration/theme TypeScript. Generated output, dependencies and frozen audit evidence/reports are excluded. `eslint.style.config.mjs` remains a compatible alias for `eslint.config.mjs`; editors can use the default ESLint configuration for fix-on-save. A second formatter with different rules can undo the chosen spacing.
+Use npm.cmd and npx.cmd in PowerShell when its wrappers do not forward arguments correctly. The default ESLint configuration covers package source, tests, contributor examples, scripts and VitePress configuration/theme TypeScript. Dependencies, generated output and generated downloadable documentation variants are excluded. Run npm run docs:examples:check to verify those variants against their page and TypeScript source. Editors can use eslint.config.mjs for fix-on-save.
 
 ## What the tools can decide
 
-[ESLint Stylistic](https://eslint.style/rules) supplies the standard whitespace rules. Local whitespace-only rules separate members in expanded objects/interfaces and expand logical `if`, `while` and `do...while` conditions. It preserves parentheses and comments. Negated root expressions and `for` headers remain manual layout choices; the rule does not descend into callback bodies or logical function arguments. `style:fix` applies available fixes; remaining line-length or comment-sensitive diagnostics may need a deliberate edit.
+[ESLint Stylistic](https://eslint.style/rules) supplies the standard whitespace rules. Local whitespace-only rules separate members in expanded objects/interfaces and expand logical `if`, `while` and `do...while` conditions. It preserves parentheses and comments. Negated root expressions and `for` headers remain manual layout choices; the rule does not descend into callback bodies or logical function arguments. `eslint --fix` applies available fixes; remaining line-length or comment-sensitive diagnostics may need a deliberate edit.
 
 ESLint recognizes statement boundaries, not the meaning of a logical step. When several transformations belong to one thought, keep them together. When responsibility changes, add a blank line. Do not force unrelated code into one block simply because a formatter accepts it.
 
@@ -53,4 +47,4 @@ Other preferences, such as descriptive names, useful intermediate variables, sma
 
 ## Stylesheets
 
-Stylelint checks SCSS with the same four-space indentation, expanded declarations and blank lines between rule blocks. Run `npm run styles:check` or `npm run styles:fix` for styles alone. Property order and selectors are preserved; formatting does not change the theme.
+Follow the existing VitePress theme's spacing and SCSS conventions. This repository does not define Stylelint or separate styles:check/styles:fix scripts. The documentation build verifies the theme's compilation; npm run lint checks authored JavaScript and TypeScript.

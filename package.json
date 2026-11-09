@@ -8,14 +8,15 @@
         "packages/portline-abstract",
         "packages/portline-core",
         "packages/portline-platform",
-        "packages/portline-cli"
+        "packages/portline-cli",
+        "packages/portline-dockline"
     ],
     "engines": {
         "node": ">=22.22.2",
         "npm": ">=12.0.2"
     },
     "scripts": {
-        "build": "npm run build --workspace=@jalsoedesign/portline-abstract && npm run build --workspace=@jalsoedesign/portline-core && npm run build --workspace=@jalsoedesign/portline-platform && npm run build --workspace=@jalsoedesign/portline-cli",
+        "build": "npm run build --workspace=@jalsoedesign/portline-abstract && npm run build --workspace=@jalsoedesign/portline-core && npm run build --workspace=@jalsoedesign/portline-platform && npm run build --workspace=@jalsoedesign/portline-cli && npm run build --workspace=@jalsoedesign/portline-dockline",
         "lint": "eslint . --max-warnings 0",
         "test": "npm run build && npm run test --workspaces",
         "test:style": "node --test scripts/eslint/*.test.mjs",
@@ -43,7 +44,8 @@
         "test:locks": "node --test scripts/check-lockfile.test.mjs",
         "release:lock": "node scripts/release-bootstrap.mjs --lock",
         "check:bootstrap": "node scripts/release-bootstrap.mjs",
-        "test:publication": "node --test scripts/publication-policy.test.mjs"
+        "test:publication": "node --test scripts/publication-policy.test.mjs",
+        "check:execution-consumer": "node scripts/check-execution-consumer.mjs"
     },
     "devDependencies": {
         "@eslint/js": "10.0.1",

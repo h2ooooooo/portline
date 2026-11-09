@@ -49,3 +49,21 @@ Native storage/image/backend contracts are also exported for trusted host integr
 `createNormalizedCliSource` adapts a normalized source for presentation. `parseProfileArgs` handles declared common/source options. `createProfileWriteCommands` adds `write`, `sync`, `apply` and `write-status` using a host-provided writer and a fixed allowlist of source adapters.
 
 See [building a CLI](/integration/cli/hooks) and the [writing guide](/integration/native-writing).
+
+
+## Shared execution: portline-dockline
+
+| Export | Behavior |
+| --- | --- |
+| `createDocklineBridge(options?)` / `DocklineBridge` | Shared normalized FTP/SFTP/SSH execution with source, credential and trust services |
+| `toConfig(input, options?)` | Resolve file configuration, including a bound SFTP trust policy, without loading a protocol client |
+| `toSshConfig(input, options?)` | Resolve scalar SSH settings; saved pin-set/callback services are retained by `withSsh` |
+| `createFileAdapter(input, options?)` | Load the selected file client and return its disconnected adapter |
+| `withFiles(input, callback, options?)` | Run a callback within a Dockline file session and close it on completion/failure |
+| `withSsh(input, callback, options?)` | Run a callback within an SSH session with `exec`, `shell` and `asUser` |
+| `ExecutionOptions` / `DocklineBridgeOptions` | Connection selection, runtime authentication/trust and supported transport controls |
+| `ProfileExecutionError` / `BridgeErrorCode` | Selection, unsupported metadata, missing credentials/trust/client and invalid-profile errors |
+| `TrustChallenge` / `TrustProvider` / `PasswordChallenge` | Explicit application callbacks; no automatic persistence |
+| `SshConfig` / `SshSession` / `SshExecOptions` / `SshExecResult` | Public structural SSH configuration, scoped command API and results |
+
+All five methods are asynchronous. A string input uses the configured source's exact-path `get`; a direct `ConnectionProfile` needs no source when runtime credentials or a credential provider are supplied. Protocol clients are optional peers. The [execution guide](/integration/execution) documents complete signatures, precedence, client installation, TLS, cancellation and every bridge error code. Generic factory/registry contracts do not replace this concrete shared bridge.

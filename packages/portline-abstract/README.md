@@ -1,13 +1,11 @@
 # Portline Abstract
 
-Shared contracts for saved connection profiles, source adapters, credential references and connector factories.
+Application-independent contracts for saved connection profiles, sources, credential references, writers and connector providers. This package has no application-reader or Dockline dependency.
 
-Independent shared contracts with no FileZilla, Dockline or transport dependency.
+`ConnectionProfile` contains metadata and credential references, never passwords, passphrases or private-key contents. Each profile can contain SSH/SFTP, FTP/TLS, database or unsupported connection definitions. SSH hops in `via` describe relationships; they do not open tunnels.
 
-`ConnectionProfile` contains metadata and credential references, never secret values. Each profile may contain several `ConnectionDefinition` records, including a database endpoint and independently authenticated SSH hops referenced by `via`. Source-native configuration remains the source adapter's responsibility.
+Execution metadata includes FTP `passive` intent, `filenameEncoding`, distinct `prompt-password` and keyboard-interactive authentication, optional canonical SHA256 fingerprint pins and `unsupportedOptions` that an executor must refuse. Readers interpret native settings and retain diagnostics rather than inventing supported behavior.
 
-`ProfileSource` supports synchronous or asynchronous list, exact-path get and substring search. Its optional generic parameter permits native compatibility adapters. `ProfileConnectorFactory` accepts arbitrary connector results, including tunnels and command sessions rather than only storage adapters.
+`ProfileSource` supports synchronous or asynchronous list, exact-path get and search. `CredentialProvider` resolves one reference explicitly. `ProfileConnectorFactory` is a generic extension contract; it does not map profiles or implement a transport.
 
-See [the architecture and migration notes](../../docs/connection-profiles.md).
-
-[Related libraries and applications](https://h2ooooooo.github.io/portline/ecosystem).
+Use the optional [Portline Dockline bridge](https://h2ooooooo.github.io/portline/integration/execution) for shared supported file/SSH execution. See [profiles and snapshots](https://h2ooooooo.github.io/portline/integration/profiles), [exact types](https://h2ooooooo.github.io/portline/integration/reference/types) and the [ecosystem directory](https://h2ooooooo.github.io/portline/ecosystem).

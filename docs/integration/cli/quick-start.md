@@ -7,7 +7,7 @@ Build a runnable command around an in-memory catalog. `@jalsoedesign/portline-cl
 ## Install
 
 ```sh
-npm install @jalsoedesign/portline-core @jalsoedesign/portline-cli
+npm install @jalsoedesign/portline-core@rc @jalsoedesign/portline-cli@rc
 ```
 
 Follow the [language setup](/integration/examples) for TypeScript tooling or JavaScript module configuration. Save `profile-cli.ts` or its matching variant. The displayed help name `demo-profiles` identifies this example; run the saved file using the tabs below.

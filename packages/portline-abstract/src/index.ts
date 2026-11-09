@@ -89,6 +89,7 @@ export type AuthenticationMethod =
         readonly passphrase?: CredentialReference;
     } |
     {readonly type: 'agent'; readonly agent?: string} |
+    {readonly type: 'prompt-password'; readonly credential?: CredentialReference} |
     {readonly type: 'interactive'} |
     {readonly type: 'anonymous'} |
     {readonly type: 'unsupported'; readonly nativeType: string};
@@ -105,14 +106,23 @@ export interface ConnectionBase {
     readonly authentication: readonly AuthenticationMethod[];
     /** Ordered SSH hops, referenced by connection ID within this profile. */
     readonly via?: readonly string[];
+    /** Native settings that cannot be executed faithfully; bridges must refuse these. */
+    readonly unsupportedOptions?: readonly string[];
+    readonly filenameEncoding?: {readonly charset: string};
 }
 
 export type ConnectionDefinition = ConnectionBase & (
-    | {readonly kind: 'ssh'; readonly protocol: 'ssh' | 'sftp'; readonly remoteDirectory?: string} |
+    | {
+        readonly kind: 'ssh';
+        readonly protocol: 'ssh' | 'sftp';
+        readonly remoteDirectory?: string;
+        readonly trust?: {readonly fingerprints: readonly string[]};
+    } |
     {
         readonly kind: 'ftp';
         readonly protocol: 'ftp' | 'ftps';
         readonly tls: 'none' | 'explicit' | 'implicit' | 'optional';
+        readonly passive?: boolean | null;
         readonly remoteDirectory?: string;
     } |
     {readonly kind: 'database'; readonly protocol: string; readonly database?: string} |

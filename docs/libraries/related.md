@@ -1,6 +1,6 @@
 # Related tools
 
-The Portline family reads and changes saved connection settings. Use the following tools when the task moves beyond those settings.
+The Portline family reads and changes saved connection settings. Its optional shared bridge reuses supported normalized definitions for file and SSH operations; Dockline implements the transport.
 
 ## Dockline
 
@@ -9,7 +9,7 @@ Use Dockline for FTP/FTPS/SFTP transfers and SSH operations. Its documentation p
 - [API documentation](https://h2ooooooo.github.io/dockline/api/)
 - [CLI documentation](https://h2ooooooo.github.io/dockline/cli/)
 
-FileZilla's connector packages add the mapping from saved FileZilla sites to Dockline. Other normalized Portline profiles require explicit supported transport mapping; there is no universal executor for every profile or tunnel chain.
+Use the [Portline Dockline bridge](/integration/execution) for supported normalized profiles from any reader. It resolves selected credentials and applies explicit trust policy through scoped file or SSH sessions. Install only the required protocol client. Per-reader FileZilla connector factories have been removed; SSH-hop/tunnel chains and database execution are not implemented by this bridge.
 
 ## Dockline Keys
 

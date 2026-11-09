@@ -8,6 +8,7 @@ This section is for adapter authors and developers embedding Portline's shared i
 | --- | --- |
 | Query normalized metadata | [Shared API quick start](/integration/api/quick-start) |
 | Implement a reader or discovery provider | [Profile/source model](/integration/profiles) and [architecture](/integration/architecture) |
+| Execute files or SSH with a selected profile | [Shared Dockline bridge](/integration/execution) |
 | Resolve credential references explicitly | [Credential providers](/integration/credentials) |
 | Embed commands in an executable | [CLI toolkit quick start](/integration/cli/quick-start) |
 | Plan sync or implement a native writer | [Sync planning](/integration/sync) and [native writing](/integration/native-writing) |
@@ -21,6 +22,7 @@ This section is for adapter authors and developers embedding Portline's shared i
 | `@jalsoedesign/portline-core` | Catalogs, queries, credential resolution, connector registration and sync planning |
 | `@jalsoedesign/portline-platform` | Native discovery/storage primitives and guarded writer infrastructure |
 | `@jalsoedesign/portline-cli` | Embeddable CLI parsing, commands and presentation |
+| `@jalsoedesign/portline-dockline` | Optional shared file-transfer and SSH execution bridge |
 
 Choose packages based on the [installation guide](/integration/installation). The shared CLI package provides a toolkit; each application repository supplies its own executable.
 

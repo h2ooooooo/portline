@@ -23,6 +23,12 @@
             "page": "integration/cli/quick-start.md",
             "args": "list --json",
             "output": "[\n  {\n    \"path\": \"Demo\",\n    \"host\": \"127.0.0.1\",\n    \"protocol\": \"ssh\",\n    \"keyFile\": \"\",\n    \"remoteDirectory\": \"\"\n  }\n]"
+        },
+        {
+            "name": "execution",
+            "page": "integration/execution.md",
+            "args": "",
+            "output": "Credential requests before mapping: 0\nFile protocol: sftp\nFile root: /reports\nSSH endpoint: example.test:22\nCredential requests after mapping: 2\nNo client loaded, no connection opened; secret values omitted."
         }
     ],
     "assets": [
@@ -104,6 +110,26 @@
         {
             "name": "profile-cli",
             "filename": "profile-cli.cjs",
+            "language": "CommonJS"
+        },
+        {
+            "name": "execution",
+            "filename": "execution.ts",
+            "language": "TypeScript"
+        },
+        {
+            "name": "execution",
+            "filename": "execution.js",
+            "language": "JavaScript"
+        },
+        {
+            "name": "execution",
+            "filename": "execution.mjs",
+            "language": "MJS"
+        },
+        {
+            "name": "execution",
+            "filename": "execution.cjs",
             "language": "CommonJS"
         }
     ],

@@ -1,0 +1,67 @@
+{
+    "name": "@jalsoedesign/portline-dockline",
+    "version": "1.0.0-rc.1",
+    "description": "Optional shared execution bridge from normalized Portline profiles to Dockline files and SSH",
+    "main": "dist/index.js",
+    "types": "dist/index.d.ts",
+    "scripts": {
+        "build": "node ../../scripts/build-package.mjs",
+        "test": "vitest run",
+        "lint": "eslint src tests --max-warnings 0",
+        "prepack": "npm run build"
+    },
+    "dependencies": {
+        "@jalsoedesign/portline-abstract": "^1.0.0-rc.1",
+        "@jalsoedesign/dockline-abstract": "^1.1.0-rc.1",
+        "@jalsoedesign/dockline-core": "^1.1.0-rc.1"
+    },
+    "devDependencies": {
+        "typescript": "6.0.3",
+        "vitest": "5.1.0"
+    },
+    "license": "MIT",
+    "engines": {
+        "node": ">=22.22.2"
+    },
+    "files": [
+        "dist",
+        "LICENSE",
+        "README.md"
+    ],
+    "exports": {
+        ".": {
+            "types": "./dist/index.d.ts",
+            "default": "./dist/index.js"
+        },
+        "./package.json": "./package.json"
+    },
+    "publishConfig": {
+        "access": "public",
+        "tag": "rc"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/h2ooooooo/portline.git",
+        "directory": "packages/portline-dockline"
+    },
+    "homepage": "https://h2ooooooo.github.io/portline/",
+    "bugs": {
+        "url": "https://github.com/h2ooooooo/portline/issues"
+    },
+    "peerDependencies": {
+        "@jalsoedesign/dockline-ftp-client": "^1.1.0-rc.1",
+        "@jalsoedesign/dockline-sftp-client": "^1.1.0-rc.1",
+        "@jalsoedesign/dockline-ssh-client": "^1.1.0-rc.1"
+    },
+    "peerDependenciesMeta": {
+        "@jalsoedesign/dockline-ftp-client": {
+            "optional": true
+        },
+        "@jalsoedesign/dockline-sftp-client": {
+            "optional": true
+        },
+        "@jalsoedesign/dockline-ssh-client": {
+            "optional": true
+        }
+    }
+}

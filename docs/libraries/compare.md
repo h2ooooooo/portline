@@ -34,6 +34,6 @@ Native writes use explicit preview/apply. Built-in commit backends currently req
 
 - **Inspect or query settings:** use the application's API or CLI.
 - **Move a supported connection:** follow [cross-application sync](/workflows/sync).
-- **Run SSH commands or transfer files:** use [Dockline](/libraries/related#dockline).
+- **Run SSH commands or transfer files:** use the [shared Portline Dockline bridge](/integration/execution) with the selected protocol client.
 - **Convert or encrypt a private key:** use [Dockline Keys](/libraries/related#dockline-keys).
 - **Implement a new reader or CLI:** use [Build an integration](/integration/).

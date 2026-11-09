@@ -12,6 +12,7 @@ const packages = [
     'portline-core',
     'portline-platform',
     'portline-cli',
+    'portline-dockline',
 ];
 
 if (!packages.some((name) => relativeDirectory === `packages/${name}`)) {

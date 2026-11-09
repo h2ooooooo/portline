@@ -193,6 +193,10 @@ export const sidebar: DefaultTheme.Sidebar = {
                     'link': '/integration/credentials',
                 },
                 {
+                    'text': 'Files and SSH execution',
+                    'link': '/integration/execution',
+                },
+                {
                     'text': 'Sync planning',
                     'link': '/integration/sync',
                 },
@@ -303,6 +307,10 @@ export const sidebar: DefaultTheme.Sidebar = {
                 {
                     'text': 'Credential providers',
                     'link': '/integration/credentials',
+                },
+                {
+                    'text': 'Files and SSH execution',
+                    'link': '/integration/execution',
                 },
                 {
                     'text': 'Sync planning',

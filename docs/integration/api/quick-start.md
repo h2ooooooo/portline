@@ -7,7 +7,7 @@ Create a catalog, select a saved profile and search its metadata. This complete 
 ## Install
 
 ```sh
-npm install @jalsoedesign/portline-core
+npm install @jalsoedesign/portline-core@rc
 ```
 
 For the default TypeScript tab, also install `tsx`, `typescript` and `@types/node` as development dependencies. Set `"type": "module"` in `package.json` for TypeScript and JavaScript; the MJS and CommonJS extensions choose their module format explicitly. The [example setup guide](/integration/examples) has copyable commands for every tab.

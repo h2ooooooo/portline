@@ -48,6 +48,8 @@ In PowerShell, use npm.cmd when forwarding flags after --. These scripts verify 
 
 For a complete cross-application integration, provide shared, Dockline and application tarballs explicitly and run `npm run check:applications -- --artifacts /path/to/artifacts` in Portline. The test installs a disposable consumer outside the checkouts and checks imports, declarations, executable behavior and synthetic write/sync safeguards.
 
+The five shared-package consumer can use the same artifact registry with `npm run check:consumer -- --artifacts /path/to/artifacts`. Run `npm run check:execution-consumer -- --artifacts /path/to/artifacts` to install only the packed bridge and required dependencies: it asserts FTP/SFTP/SSH clients are absent, checks actionable missing-handler errors, and compiles the public declarations strictly without optional clients.
+
 ## Keep API examples current
 
 After building, run `npm run docs:api` to regenerate the public declaration reference, `npm run docs:api:check` to detect drift, and `npm run docs:imports:check` to validate documented named imports against installed declarations. Optional integration examples can be checked completely with `npm run docs:imports:check -- --consumer /path/to/isolated-consumer` after installing their adapter packages there. These checks do not fetch another checkout. Runnable local demos and isolated consumers exercise behavior beyond import names.

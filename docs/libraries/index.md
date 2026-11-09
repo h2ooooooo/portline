@@ -7,11 +7,11 @@ Compare [storage, discovery, credentials and write support](/libraries/compare),
 
 ## FileZilla JS
 
-FileZilla Site Manager profiles and Dockline transfer adapters.
+FileZilla native settings, normalized profiles and explicit credential resolution.
 
 [API documentation](https://h2ooooooo.github.io/filezilla-js/api/) · [CLI documentation](https://h2ooooooo.github.io/filezilla-js/cli/) · [GitHub](https://github.com/h2ooooooo/filezilla-js)
 
-Packages: [`@jalsoedesign/filezilla-core`](https://www.npmjs.com/package/@jalsoedesign/filezilla-core), [`@jalsoedesign/filezilla-cli`](https://www.npmjs.com/package/@jalsoedesign/filezilla-cli), [`@jalsoedesign/filezilla-connector-abstract`](https://www.npmjs.com/package/@jalsoedesign/filezilla-connector-abstract), [`@jalsoedesign/filezilla-connector-ftp`](https://www.npmjs.com/package/@jalsoedesign/filezilla-connector-ftp), [`@jalsoedesign/filezilla-connector-sftp`](https://www.npmjs.com/package/@jalsoedesign/filezilla-connector-sftp).
+Packages: [`@jalsoedesign/filezilla-core`](https://www.npmjs.com/package/@jalsoedesign/filezilla-core), [`@jalsoedesign/filezilla-cli`](https://www.npmjs.com/package/@jalsoedesign/filezilla-cli).
 
 ## HeidiSQL JS
 

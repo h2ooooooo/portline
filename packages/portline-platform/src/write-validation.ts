@@ -43,6 +43,15 @@ export function sanitizeProfile(profile: ConnectionProfile): ConnectionProfile {
         ids.add(id);
 
         if (
+            item.unsupportedOptions?.length ||
+            typeof item.passive === 'boolean' ||
+            item.filenameEncoding !== undefined ||
+            item.trust?.fingerprints?.length
+        ) {
+            throw new Error('Execution-specific settings cannot be copied safely by the native writer');
+        }
+
+        if (
             !['ssh', 'ftp', 'database'].includes(item.kind) ||
             !item.endpoint ||
             !Number.isInteger(item.endpoint.port) ||
@@ -75,7 +84,13 @@ export function sanitizeProfile(profile: ConnectionProfile): ConnectionProfile {
                 };
             }
 
-            if (['password', 'agent', 'interactive', 'anonymous'].includes(auth.type)) {
+            if ([
+                'password',
+                'agent',
+                'interactive',
+                'prompt-password',
+                'anonymous',
+            ].includes(auth.type)) {
                 // References cannot carry credential values into preview files or native writers.
                 return auth.type === 'password' ? {
                     type: 'password',

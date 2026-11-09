@@ -97,6 +97,9 @@ export type AuthenticationMethod = {
     readonly type: 'agent';
     readonly agent?: string;
 } | {
+    readonly type: 'prompt-password';
+    readonly credential?: CredentialReference;
+} | {
     readonly type: 'interactive';
 } | {
     readonly type: 'anonymous';
@@ -115,15 +118,24 @@ export interface ConnectionBase {
     readonly authentication: readonly AuthenticationMethod[];
     /** Ordered SSH hops, referenced by connection ID within this profile. */
     readonly via?: readonly string[];
+    /** Native settings that cannot be executed faithfully; bridges must refuse these. */
+    readonly unsupportedOptions?: readonly string[];
+    readonly filenameEncoding?: {
+        readonly charset: string;
+    };
 }
 export type ConnectionDefinition = ConnectionBase & ({
     readonly kind: 'ssh';
     readonly protocol: 'ssh' | 'sftp';
     readonly remoteDirectory?: string;
+    readonly trust?: {
+        readonly fingerprints: readonly string[];
+    };
 } | {
     readonly kind: 'ftp';
     readonly protocol: 'ftp' | 'ftps';
     readonly tls: 'none' | 'explicit' | 'implicit' | 'optional';
+    readonly passive?: boolean | null;
     readonly remoteDirectory?: string;
 } | {
     readonly kind: 'database';
@@ -420,6 +432,109 @@ export interface ProfileSyncMapping {
 }
 /** One-way, exact-path sync. No pruning, credential resolution or implicit connection selection. */
 export declare function planProfileSync<TPlan extends ProfileWritePlan>(source: ProfileSource, writer: ProfileWriter<TPlan>, mappings: readonly ProfileSyncMapping[]): Promise<TPlan>;
+```
+
+## @jalsoedesign/portline-dockline
+
+### index.d.ts
+
+```ts
+import type { Awaitable, ConnectionDefinition, ConnectionProfile, CredentialProvider, ProfileSource } from '@jalsoedesign/portline-abstract';
+import type { ConnectorConnectionOptions, ConnectorOperationOptions, SftpKeyboardInteractive, TransferAdapter, TransferConfig } from '@jalsoedesign/dockline-abstract' with { 'resolution-mode': 'import' };
+import type { Dockline } from '@jalsoedesign/dockline-core' with { 'resolution-mode': 'import' };
+export type BridgeErrorCode = 'PROFILE_NOT_FOUND' | 'CONNECTION_SELECTION_REQUIRED' | 'UNSUPPORTED_PROFILE' | 'MISSING_CREDENTIAL' | 'MISSING_TRUST' | 'MISSING_HANDLER' | 'INVALID_PROFILE';
+export declare class ProfileExecutionError extends Error {
+    readonly code: BridgeErrorCode;
+    constructor(code: BridgeErrorCode, message: string);
+}
+export interface TrustChallenge {
+    readonly host: string;
+    readonly port: number;
+    readonly fingerprint: string;
+    readonly profile: ConnectionProfile;
+    readonly connection: ConnectionDefinition;
+    readonly publicKey?: Buffer;
+    readonly abortSignal?: AbortSignal;
+}
+export type TrustProvider = (challenge: TrustChallenge) => Awaitable<boolean>;
+export interface PasswordChallenge {
+    readonly profile: ConnectionProfile;
+    readonly connection: ConnectionDefinition;
+    readonly kind: 'password' | 'passphrase';
+}
+export interface DocklineBridgeOptions {
+    readonly source?: ProfileSource & Partial<CredentialProvider>;
+    readonly credentials?: CredentialProvider;
+    readonly trust?: TrustProvider;
+    /** Override loading for embedded runtimes; no protocol package is loaded during metadata reads. */
+    readonly loadPackage?: (packageName: string) => Awaitable<unknown>;
+}
+export interface ExecutionOptions extends ConnectorOperationOptions, ConnectorConnectionOptions {
+    connectionId?: string;
+    password?: string;
+    passphrase?: string;
+    privateKey?: string | Buffer;
+    privateKeyPath?: string;
+    agent?: string;
+    keyboardInteractive?: SftpKeyboardInteractive;
+    promptPassword?: (challenge: PasswordChallenge) => Awaitable<string>;
+    hostFingerprint?: string;
+    trust?: TrustProvider;
+    /** Required when the saved FTP TLS mode is ambiguous; required TLS cannot be downgraded. */
+    tls?: 'none' | 'explicit' | 'implicit';
+    secureOptions?: import('node:tls').ConnectionOptions;
+    filenameEncoding?: {
+        charset: string;
+    };
+    readyTimeout?: number;
+}
+export interface SshConfig {
+    host: string;
+    port: number;
+    username: string;
+    password?: string;
+    passphrase?: string;
+    privateKeyPath?: string;
+    agent?: string;
+    keyboardInteractive?: boolean;
+    hostFingerprint?: string;
+    readyTimeout?: number;
+}
+export interface SshExecOptions {
+    timeout?: string | number;
+    sudo?: boolean | string;
+    allowFailure?: boolean;
+}
+export interface SshExecResult {
+    code: number;
+    stdout: string;
+    stderr: string;
+}
+export interface SshSession {
+    exec(program: string, args?: string[], options?: SshExecOptions): Promise<SshExecResult>;
+    shell(command: string, options?: SshExecOptions): Promise<SshExecResult>;
+    asUser<T>(user: string, callback: (session: SshSession) => Promise<T>): Promise<T>;
+}
+type ProfileInput = ConnectionProfile | string;
+/** Shared normalized profile execution. Native readers supply metadata; Dockline owns sessions and operations. */
+export declare class DocklineBridge {
+    private readonly options;
+    private readonly terminalTrust;
+    constructor(options?: DocklineBridgeOptions);
+    private select;
+    private secret;
+    private authentication;
+    private validFingerprint;
+    private verifier;
+    toConfig(input: ProfileInput, options?: ExecutionOptions): Promise<TransferConfig>;
+    toSshConfig(input: ProfileInput, options?: ExecutionOptions): Promise<SshConfig>;
+    private load;
+    createFileAdapter(input: ProfileInput, options?: ExecutionOptions): Promise<TransferAdapter>;
+    withFiles<T>(input: ProfileInput, callback: (remote: Dockline) => Promise<T>, options?: ExecutionOptions): Promise<T>;
+    withSsh<T>(input: ProfileInput, callback: (session: SshSession) => Promise<T>, options?: ExecutionOptions): Promise<T>;
+}
+export declare function createDocklineBridge(options?: DocklineBridgeOptions): DocklineBridge;
+export {};
 ```
 
 ## @jalsoedesign/portline-platform

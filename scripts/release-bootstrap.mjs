@@ -46,7 +46,13 @@ try {
                 const lock = JSON.parse(await readFile(path.join(repository, 'package-lock.json'), 'utf8'));
 
                 for (const [location, entry] of Object.entries(lock.packages)) {
-                    if (!entry.link && /^(file:|link:|http:)/.test(entry.resolved ?? '')) {
+                    const name = entry.name ?? location.slice(location.lastIndexOf('node_modules/') + 'node_modules/'.length);
+                    const candidate = registry.candidates.get(name);
+                    const staleCandidate = location.includes('node_modules/') && candidate &&
+                        entry.version === candidate.version &&
+                        entry.integrity !== candidate.integrity;
+
+                    if (!entry.link && (/^(file:|link:|http:)/.test(entry.resolved ?? '') || staleCandidate)) {
                         delete lock.packages[location];
                     }
                 }

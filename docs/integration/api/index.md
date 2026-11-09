@@ -18,9 +18,10 @@ Use Portline to query saved connection metadata, resolve credential references a
 | `@jalsoedesign/portline-core` | Catalogs, queries, credential resolution, connector registry and sync planning |
 | `@jalsoedesign/portline-platform` | Native provenance/discovery primitives and guarded writer infrastructure |
 | `@jalsoedesign/portline-cli` | Embeddable command parsing and presentation |
+| `@jalsoedesign/portline-dockline` | Optional shared mapping, scoped file transfers and SSH sessions |
 
 ## Go further
 
 Choose an [application adapter](/ecosystem) to read native settings. Learn the [profile model and snapshots](/integration/profiles), review [writing and recovery](/integration/native-writing) before applying changes, and use [method contracts](/integration/reference/api) or [exact declarations](/integration/reference/types) for lookup.
 
-Profiles are metadata. Transport operations, SSH tunnels and SQL execution require a separate implementation. [Architecture and responsibilities](/integration/architecture) explains these boundaries. For terminal integration, use the [CLI documentation](/integration/cli/).
+Profiles remain metadata until an explicit operation. The [shared execution bridge](/integration/execution) maps supported FTP/SFTP/SSH definitions and invokes Dockline; SSH tunnels and SQL still require separate implementations. [Architecture and responsibilities](/integration/architecture) explains these boundaries. For terminal integration, use the [CLI documentation](/integration/cli/).

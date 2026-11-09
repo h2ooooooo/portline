@@ -5,11 +5,11 @@ Portline is the saved-connection library family. Start with an application below
 
 ## FileZilla JS
 
-FileZilla Site Manager profiles and Dockline transfer adapters.
+FileZilla native settings, normalized profiles and explicit credential resolution.
 
 [API documentation](https://h2ooooooo.github.io/filezilla-js/api/) · [CLI documentation](https://h2ooooooo.github.io/filezilla-js/cli/) · [GitHub](https://github.com/h2ooooooo/filezilla-js)
 
-Packages: [`@jalsoedesign/filezilla-core`](https://www.npmjs.com/package/@jalsoedesign/filezilla-core), [`@jalsoedesign/filezilla-cli`](https://www.npmjs.com/package/@jalsoedesign/filezilla-cli), [`@jalsoedesign/filezilla-connector-abstract`](https://www.npmjs.com/package/@jalsoedesign/filezilla-connector-abstract), [`@jalsoedesign/filezilla-connector-ftp`](https://www.npmjs.com/package/@jalsoedesign/filezilla-connector-ftp), [`@jalsoedesign/filezilla-connector-sftp`](https://www.npmjs.com/package/@jalsoedesign/filezilla-connector-sftp).
+Packages: [`@jalsoedesign/filezilla-core`](https://www.npmjs.com/package/@jalsoedesign/filezilla-core), [`@jalsoedesign/filezilla-cli`](https://www.npmjs.com/package/@jalsoedesign/filezilla-cli).
 
 ## HeidiSQL JS
 
@@ -105,7 +105,7 @@ Packages: [`@jalsoedesign/dockline-sftp-client`](https://www.npmjs.com/package/@
 
 ## Dockline SSH
 
-SSH execution, forwarding and session operations.
+Scoped SSH commands, sudo and file-transfer operations.
 
 Packages: [`@jalsoedesign/dockline-ssh-client`](https://www.npmjs.com/package/@jalsoedesign/dockline-ssh-client).
 
@@ -115,10 +115,18 @@ Packages: [`@jalsoedesign/dockline-ssh-client`](https://www.npmjs.com/package/@j
 
 ## Portline
 
-Shared connection profile contracts, queries, native storage safeguards and CLI infrastructure.
+Shared normalized connection profiles, metadata queries, credential resolution, guarded native writes and CLI infrastructure.
 
 Packages: [`@jalsoedesign/portline-abstract`](https://www.npmjs.com/package/@jalsoedesign/portline-abstract), [`@jalsoedesign/portline-core`](https://www.npmjs.com/package/@jalsoedesign/portline-core), [`@jalsoedesign/portline-platform`](https://www.npmjs.com/package/@jalsoedesign/portline-platform), [`@jalsoedesign/portline-cli`](https://www.npmjs.com/package/@jalsoedesign/portline-cli).
 
 [Documentation](/integration/) · [GitHub](https://github.com/h2ooooooo/portline)
+
+## Portline Dockline bridge
+
+Optional shared mapping and scoped file/SSH execution for normalized profiles from any application reader.
+
+Packages: [`@jalsoedesign/portline-dockline`](https://www.npmjs.com/package/@jalsoedesign/portline-dockline).
+
+[Documentation](https://h2ooooooo.github.io/portline/) · [GitHub](https://github.com/h2ooooooo/portline)
 
 Directory contributions are described in [contributing](/integration/contributing).

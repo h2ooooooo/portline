@@ -170,7 +170,7 @@ Guarded mode is **not atomic**: readers can observe a partial update, and checks
 
 The selected policy is bound to the saved preview. Pass `--registry-mode guarded` for both preview and apply; a transactional writer refuses a guarded preview. File destinations reject this registry-only option.
 
-~~~sh
+```sh
 putty-js write-status --registry 'HKCU\Software\SimonTatham\PuTTY\Sessions' --registry-mode guarded --json
 putty-js write --registry 'HKCU\Software\SimonTatham\PuTTY\Sessions' --registry-mode guarded --input profiles.json --preview plan.json --json
 ```
@@ -179,13 +179,15 @@ Review `plan.json` and keep the application closed. Then apply with the same reg
 
 ```sh
 putty-js apply --registry 'HKCU\Software\SimonTatham\PuTTY\Sessions' --registry-mode guarded --plan plan.json --json
-~~~
+```
 
 Windows can report `ERROR_RM_NOT_ACTIVE` (6801) for registry transactions even when ordinary access works. Transactional writes refuse that capability error without an automatic downgrade. Guarded mode is an explicit alternative with weaker atomicity, as described above. See the [native API contract](https://learn.microsoft.com/en-us/windows/win32/api/winreg/nf-winreg-regopenkeytransactedw). Test transaction support on the target Windows system before relying on transactional apply.
 
 Updates preserve unrelated native settings. INI/registry-export/portable text edits retain unrelated lines; XML serialization may change formatting while retaining unrelated elements, attributes and comments. JetBrains deployment updates detach the selected deployment from a shared SSH reference instead of modifying other deployments using that reference. Deleting a profile is explicit; folders are not recursively pruned.
 
 Stored passwords, passphrases, private key contents and host trust policies are not copied. Input fields outside the normalized contract are discarded. Existing target credentials are retained only when the adapter can preserve the relevant identity; invalidated credentials are cleared or disabled. Password Safe entries are never created or deleted. Concrete key paths are copied; relative paths need a known base directory. OpenSSH destinations reject PPK keys until they have been converted separately.
+
+The normalized execution model is broader than the native write-intent subset. Current codecs explicitly refuse nonempty `unsupportedOptions`, a boolean `passive` selection, any `filenameEncoding` and nonempty SSH fingerprint pins. `passive: null` is default intent and may be omitted. These refusals also apply with `--allow-lossy`; they are not silently discarded or copied as approvals. Password-prompt metadata is accepted with its credential reference stripped.
 
 ## Apply-time protection and recovery
 

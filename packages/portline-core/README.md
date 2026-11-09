@@ -1,14 +1,13 @@
 # Portline Core
 
-Application-independent profile queries, catalogs, credential orchestration and connector registration.
+Application-independent profile queries, catalogs, credential orchestration, connector registration and sync planning.
 
-- `searchProfiles`, `getProfileByPath` and `buildProfileTree` operate on source adapters without requiring a native application model.
-- `ProfileCatalog` provides exact selection and metadata search for normalized profiles.
-- `CredentialResolver` dispatches explicit credential requests to source-specific providers without caching secrets.
-- `ProfileConnectorRegistry` supports arbitrary connector results and source-defined protocol keys. Typed registration handles retain provider-specific options and result types. Use separate registries for file transfer, execution, tunneling and database capabilities.
+- `searchProfiles`, `getProfileByPath` and `buildProfileTree` query a source without requiring its native application model.
+- `ProfileCatalog` provides exact-path selection and metadata search.
+- `CredentialResolver` dispatches explicit requests to source-specific providers without caching returned secrets.
+- `ProfileConnectorRegistry` dispatches registered factories and retains provider-specific options/results. It supplies no built-in transport mapping.
+- `planProfileSync` selects connections and their dependencies for a writer; it does not resolve secrets or execute SSH hops.
 
-No native setting discovery or transport execution lives here. File transfer stays with Dockline; authentication format handling and application host-key import remain in their respective adapters/providers.
+Native discovery and transport execution are outside this package. The optional [Portline Dockline bridge](https://h2ooooooo.github.io/portline/integration/execution) maps supported normalized profiles from any reader to file-transfer or SSH sessions. Application readers still interpret native settings; Dockline implements transports.
 
-See [the architecture and migration notes](../../docs/connection-profiles.md).
-
-[Related libraries and applications](https://h2ooooooo.github.io/portline/ecosystem).
+See the [API guide](https://h2ooooooo.github.io/portline/integration/reference/api), [credential providers](https://h2ooooooo.github.io/portline/integration/credentials) and [ecosystem directory](https://h2ooooooo.github.io/portline/ecosystem).

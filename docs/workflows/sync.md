@@ -7,7 +7,7 @@ Copy a supported saved connection between application settings in two stages: cr
 Install the destination CLI and source adapter in the same project/environment:
 
 ```sh
-npm install @jalsoedesign/winscp-cli @jalsoedesign/heidisql-core
+npm install @jalsoedesign/winscp-cli@rc @jalsoedesign/heidisql-core@rc
 ```
 
 The commands below are native-settings templates. They require an existing HeidiSQL portable settings file and WinSCP INI, both on the host. They are not connected-server tests.

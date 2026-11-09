@@ -1,6 +1,6 @@
 {
     "name": "@jalsoedesign/portline-core",
-    "version": "1.0.0",
+    "version": "1.0.0-rc.1",
     "description": "Application-independent connection profile core",
     "main": "dist/index.js",
     "types": "dist/index.d.ts",
@@ -11,7 +11,7 @@
         "prepack": "npm run build"
     },
     "dependencies": {
-        "@jalsoedesign/portline-abstract": "^1.0.0"
+        "@jalsoedesign/portline-abstract": "^1.0.0-rc.1"
     },
     "devDependencies": {
         "typescript": "6.0.3",
@@ -35,7 +35,8 @@
         "./dist/*": "./dist/*"
     },
     "publishConfig": {
-        "access": "public"
+        "access": "public",
+        "tag": "rc"
     },
     "repository": {
         "type": "git",

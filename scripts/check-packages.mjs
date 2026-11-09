@@ -61,7 +61,9 @@ for (const packed of packages) {
     }[packageName];
     const docklineDependencies = Object.keys(manifest.dependencies ?? {}).filter(name => name.startsWith('@jalsoedesign/dockline-'));
 
-    assert.deepEqual(docklineDependencies, expectedDocklineDependency ? [expectedDocklineDependency] : []);
+    assert.deepEqual(docklineDependencies.sort(), packageName === 'portline-dockline' ?
+        ['@jalsoedesign/dockline-abstract', '@jalsoedesign/dockline-core'] :
+        expectedDocklineDependency ? [expectedDocklineDependency] : []);
 
     for (const version of Object.values(manifest.dependencies ?? {})) {
         assert.equal(version.startsWith('file:'), false, `${packed.name}: published dependencies must be portable`);

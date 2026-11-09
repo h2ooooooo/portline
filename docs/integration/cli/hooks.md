@@ -66,4 +66,4 @@ Preview files use create-only output. Apply requires the same explicit destinati
 
 Configure colour preferences in the executable bootstrap before importing the engine. JSON output is colour-free. `run(args)` returns an exit code; it does not terminate the process. Set `process.exitCode` in an executable, or inspect the return value in an embedding test.
 
-Custom handlers can implement application-specific checks while keeping transfers, SSH execution and database operations outside the shared profile engine.
+Custom handlers can implement application-specific checks using the optional [Portline Dockline bridge](/integration/execution). Transfers and SSH run through that separate bridge; the base CLI engine remains a metadata/command toolkit. Database execution and SSH-hop/tunnel chains need another implementation.

@@ -4,7 +4,7 @@
         {
             "id": "portline",
             "name": "Portline",
-            "description": "Shared connection profile contracts, queries, native storage safeguards and CLI infrastructure.",
+            "description": "Shared normalized connection profiles, metadata queries, credential resolution, guarded native writes and CLI infrastructure.",
             "role": "Shared profile infrastructure",
             "repository": "https://github.com/h2ooooooo/portline",
             "packages": [
@@ -20,15 +20,12 @@
         {
             "id": "filezilla-js",
             "name": "FileZilla JS",
-            "description": "FileZilla Site Manager profiles and Dockline transfer adapters.",
+            "description": "FileZilla native settings, normalized profiles and explicit credential resolution.",
             "role": "Application adapters",
             "repository": "https://github.com/h2ooooooo/filezilla-js",
             "packages": [
                 "@jalsoedesign/filezilla-core",
-                "@jalsoedesign/filezilla-cli",
-                "@jalsoedesign/filezilla-connector-abstract",
-                "@jalsoedesign/filezilla-connector-ftp",
-                "@jalsoedesign/filezilla-connector-sftp"
+                "@jalsoedesign/filezilla-cli"
             ],
             "documentation": "https://h2ooooooo.github.io/filezilla-js/",
             "family": "portline",
@@ -187,7 +184,7 @@
         {
             "id": "dockline-ssh-client",
             "name": "Dockline SSH",
-            "description": "SSH execution, forwarding and session operations.",
+            "description": "Scoped SSH commands, sudo and file-transfer operations.",
             "role": "Protocol client",
             "repository": "https://github.com/h2ooooooo/dockline",
             "packages": [
@@ -208,6 +205,19 @@
             ],
             "documentation": "https://h2ooooooo.github.io/dockline/",
             "family": "dockline",
+            "applications": []
+        },
+        {
+            "id": "portline-dockline",
+            "name": "Portline Dockline bridge",
+            "description": "Optional shared mapping and scoped file/SSH execution for normalized profiles from any application reader.",
+            "role": "Operations",
+            "repository": "https://github.com/h2ooooooo/portline",
+            "packages": [
+                "@jalsoedesign/portline-dockline"
+            ],
+            "documentation": "https://h2ooooooo.github.io/portline/",
+            "family": "portline",
             "applications": []
         }
     ]

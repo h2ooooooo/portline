@@ -42,7 +42,7 @@ Portline makes those saved profiles available to code and terminal commands. Fin
 
 ## Transfers, SSH and keys
 
-[Dockline](https://h2ooooooo.github.io/dockline/) performs file transfers and SSH operations. Start with a selected profile and supply the available authentication to the appropriate client.
+[Dockline](https://h2ooooooo.github.io/dockline/) performs file transfers and SSH operations. Use the optional [shared Portline Dockline bridge](/integration/execution) with a selected normalized profile, explicit authentication and SSH trust. It provides scoped files/SSH APIs across the application readers.
 
 [Dockline Keys](https://h2ooooooo.github.io/dockline/keys/) works independently to load, inspect and convert keys, including PuTTY PPK v2/v3 and encrypted exports. See [related tools](/libraries/related) to choose the right part.
 

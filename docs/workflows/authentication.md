@@ -19,3 +19,5 @@ Profile readers can report the saved key path and its base-directory metadata wi
 HeidiSQL database and SSH tunnel endpoints have independent credentials. When copying its SSH tunnel to an SSH-oriented destination, select the `ssh` connection explicitly. Do not use the database host as an inferred SSH endpoint. See the [sync example](/workflows/sync).
 
 For exact support, choose an [application library](/libraries/compare#authentication-and-writes). For implementing explicit credential providers, see the [integration example](/integration/credentials).
+
+For executing a selected connection, the [shared bridge authentication guide](/integration/execution#authentication-and-key-selection) distinguishes runtime password/key/agent inputs, password prompts, keyboard-interactive handlers and explicit host trust. Reading metadata or key paths does not approve a server.
